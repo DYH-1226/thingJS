@@ -1,0 +1,204 @@
+<!--    
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+    }
+</style>
+
+<body>
+    <div id="dd"></div>
+</body>
+<script>
+    function randomHexColor() { //随机生成十六进制颜色
+        var colorNumb;
+        return ('#' + '00000' + (Math.random() * 0x1000000 << 0).toString(16)).substr(-6);
+    }
+    
+    let colorNumb=randomHexColor();
+    
+    var i = document.getElementsById('dd')
+    i.style.backgroundColor = colorNumb
+    
+    </script>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<div id="d">
+
+</div>
+<button id="c" value="变颜色" οnclick="change()">变</button>
+<script>
+    var b =document.getElementById('c');
+    var i= document.getElementById('d');
+    function change(){
+        i.style.backgroundColor='pink';
+    }
+</script>
+</body>
+</html> -->
+
+<html>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+    }
+</style>
+<body>
+
+    <div id="demo"></div>
+
+<script>
+    // var a = 0;
+    // loopA = () =>{
+    //     if(a > 10){
+    //         return;
+    //     }else{
+    //         a += 1;
+    //     console.log(a)
+    //     }  
+    // }
+
+    // add = () =>{
+    //     setInterval("loopA()",1000)
+    // }
+
+    // substrcte = () =>{
+    //     for(let j=15;j<=20;j++){
+    //         console.log(j);
+    //     }
+    // }
+
+    // resolveAfterSeconds = () =>{
+    //     add()
+    // }
+
+    // async function f1(){
+    //     await resolveAfterSeconds();
+    //     substrcte();
+    // }
+ 
+    // f1();
+
+var winnerPromise = new Promise(function (resolve) { 
+    setTimeout(function () { 
+        console.log('this is winner'); 
+        resolve('this is winner'); 
+    }, 4); }); 
+
+var loserPromise = new Promise(function (resolve) { 
+    setTimeout(function () { 
+        console.log('this is loser'); 
+        resolve('this is loser'); 
+    }, 1000); 
+}); 
+// 第一个promise变为resolve后程序停止 
+// Promise.race([winnerPromise, loserPromise]).then(function (value) { 
+//   console.log(value); => 'this is winner' 
+// });
+
+
+
+function delayPromise(ms) { 
+    return new Promise(function (resolve) { 
+        setTimeout(resolve, ms); 
+    }); 
+} 
+function timeoutPromise(promise, ms) { 
+    var timeout = delayPromise(ms).then(function () {
+        throw new Error('Operation timed out after ' + ms + ' ms'); 
+    }); 
+    return Promise.race([promise, timeout]); 
+}
+// 函数 timeoutPromise(比较对象promise, ms) 接收两个参数，第一个是需要使用超时机制的promise对象，第二个参数是超时时间，它返回一个由 Promise.race 创建的相互竞争的promise对象。
+
+
+
+function delayPromise(ms) { 
+    return new Promise(function (resolve) { 
+        setTimeout(resolve, ms); 
+    }); 
+} 
+function timeoutPromise(promise, ms) { 
+    var timeout = delayPromise(ms).then(function () { 
+        throw new Error('Operation timed out after ' + ms + ' ms'); 
+    }); 
+    return Promise.race([promise, timeout]); 
+} 
+// 运行示例 var taskPromise = new Promise(function(resolve){ // 随便一些什么处理 var delay = Math.random() * 2000; setTimeout(function(){ resolve(delay + "ms"); }, delay); }); timeoutPromise(taskPromise, 1000).then(function(value){ console.log("taskPromise在规定时间内结束 : " + value); }).catch(function(error){ console.log("发生超时", error); }); 运行 虽然在发生超时的时候抛出了异常，但是这样的话我们就不能区分这个异常到底是普通的错误还是超时错误了。
+
+
+
+
+
+var a = 0;
+loopA = () =>{
+    if(a > 10){
+      // return;
+      timerList.forEach(item => clearInterval(item))
+    }else{
+      a += 1;
+      console.log(a)
+    }  
+}
+
+let timer = null;
+let timerList = []
+
+add = () =>{
+  timer = setInterval(loopA, 1000)
+  timerList.push(timer)
+}
+
+substrcte = () => {
+  for(let j=15;j<=20;j++){
+      console.log(j);
+  }
+}
+
+resolveAfterSeconds = () =>{
+  add()
+}
+
+async function f1(){
+  await resolveAfterSeconds();
+  setTimeout(() => {
+    substrcte();
+  }, 12000)
+}
+
+f1();
+
+</script>
+
+</body>
+</html>
+
